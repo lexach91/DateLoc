@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'profiles',
     'location_match',
-    'chat'
+    'chat',
 ]
 
 MIDDLEWARE = [
