@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def location_match(request):
+    '''Location Match page view'''
+    return render(request, "location_match/location_match.html")
