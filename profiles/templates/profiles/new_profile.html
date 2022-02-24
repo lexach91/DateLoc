@@ -10,35 +10,40 @@
 
 <body>
     <h1>Create your profile</h1>
-    <form action="" method="post">
+    <form action="#" method="post">
+
+        <label for="fname">What's your first name?</label>
+        <input type="text" name="fname" id="fname" required>
+
+        <label for="email">What's your email address?</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+
+        <label for="confirm-password">Confirm password:</label>
+        <input type="password" name="confirm-password" id="confirm-password" required>
+
+        <label for="dob">When's your birthday?</label min="2004-02-24" required>
+        <input type="date" name="dob" id="dob">
         <fieldset>
-            <label for="fname">What's your first name?</label>
-            <input type="text" name="fname" id="fname" required>
-
-            <label for="email">What's your email address?</label>
-            <input type="email" name="email" id="email" required>
-
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required>
-
-            <label for="confirm-password">Password:</label>
-            <input type="password" name="confirm-password" id="confirm-password" required>
-
-            <label for="dob">When's your birthday?</label min="2004-02-24" required>
-            <input type="date" name="dob" id="dob">
-
-            <label for="gender">How do you identify?</label>
+            <legend>How do you identify?</legend>
             <select name="gender" id="gender">
                 <option value="nonbinary">Nonbinary</option>
+                <br>
                 <option value="woman">Woman</option>
+                <br>
                 <option value="man">Man</option>
+                <br>
                 <option value="other">Other</option>
-                
+                <br>
             </select>
             <div id="ifYes" style="display: none;">
                 <label for="other-gender">How do you identify?</label>
                 <input type="text" id="other-gender" name="car">
             </div>
+
+            <button type="submit">Create Profile</button>
         </fieldset>
     </form>
 </body>
