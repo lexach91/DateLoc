@@ -1,1 +1,49 @@
-<h1>Base Page</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block meta %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+
+    {% block extra_meta %}
+    {% endblock %}
+
+    {% block core_css %}
+    {% endblock %}
+
+    {% block extra_css %}
+    {% endblock %}
+
+    {% block core_js %}
+    {% endblock %}
+
+
+    {% block extra_js %}
+    {% endblock %}
+
+    {% block title %}
+    {% endblock %}
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <footer></footer>
+
+    {% block postloadjs %}
+    {% endblock %}
+
+</body>
+
+</html>
