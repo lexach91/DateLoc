@@ -7,6 +7,7 @@ dj3-cloudinary-storage==0.0.5
 django-allauth==0.44.0
 django-crispy-forms==1.11.2
 django-summernote==0.8.11.6
+daphne==3.0.2
 gunicorn==20.1.0
 oauthlib==3.1.1
 psycopg2==2.8.6
