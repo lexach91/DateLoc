@@ -19,3 +19,4 @@ channels-redis==3.3.1
 redis==4.1.4
 uvicorn==0.17.5
 channels==3.0.4
+django-heroku-0.3.1
