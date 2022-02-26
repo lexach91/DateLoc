@@ -1,0 +1,1 @@
+web: gunicorn DateLoc.asgi:application
