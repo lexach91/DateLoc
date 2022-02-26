@@ -25,4 +25,4 @@ urlpatterns = [
     path('location_match/', include('location_match.urls')),
     path('profiles/', include('profiles.urls')),
     path('account/', include('allauth.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
