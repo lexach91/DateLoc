@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h3>Registration</h3>
+
+<p>{{ test_message }}</p>
+
+<form action="{% url 'registration' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <div>
+        <button type="submit" class="" aria-label="">register</button>
+    </div>
+</form>
+{% endblock %}
