@@ -52,8 +52,8 @@ INSTALLED_APPS = [
     'location_match',
     'chat',
     'home',
-    'crispy_forms',
-    'registration',
+    # 'crispy_forms',
+    'login_user'
 ]
 
 MIDDLEWARE = [
@@ -86,10 +86,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'builtins': [
-                'crispy_forms.templatetags.crispy_forms_tags',
-                'crispy_forms.templatetags.crispy_forms_field',
-            ]
+            # 'builtins': [
+            #     'crispy_forms.templatetags.crispy_forms_tags',
+            #     'crispy_forms.templatetags.crispy_forms_field',
+            # ]
         },
     },
 ]

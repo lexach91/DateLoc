@@ -23,5 +23,5 @@ urlpatterns = [
     path('location_match/', include('location_match.urls')),
     path('profiles/', include('profiles.urls')),
     path('account/', include('allauth.urls')),
-    path('registration/', include('registration.urls')),
+    path('login_user/', include('login_user.urls')),
 ]
