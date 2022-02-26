@@ -1,1 +1,1 @@
-web: gunicorn DateLoc.wsgi:application
+web: gunicorn -w 4 -k uvicorn.workers.UvicornWorker DateLoc.asgi:application
