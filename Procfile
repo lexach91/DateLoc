@@ -1,2 +1,1 @@
-release: python manage.py migrate
-web: gunicorn justchat.wsgi --log-file -
+web: gunicorn DateLoc.wsgi:application
