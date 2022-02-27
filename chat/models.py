@@ -2,20 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Conversations(models.Model):
-    participants = models.ManyToManyField(User, related_name="participants", unique=False)
+class PrivateChat(models.Model):
+    user1 = models.ForeignKey(User, related_name='user1', on_delete=models.CASCADE)
+    user2 = models.ForeignKey(User, related_name='user2', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.participants
+        return self.user1 + ' ' + self.user2
 
 
-class Messages(models.Model):
-    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sender", unique=False)
-    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name="receiver", unique=False)
-    conversation = models.ForeignKey(Conversations, on_delete=models.CASCADE, related_name="conversations")
-    message_content = models.TextField(max_length=500, default='', blank=False)
-    created_on = models.DateTimeField(auto_now_add=True)
-    is_read = models.BooleanField(default=False, blank=False)
-
+class Message(models.Model):
+    chat = models.ForeignKey(PrivateChat, on_delete=models.CASCADE, related_name='messages')
+    sender = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    
     def __str__(self):
-        return self.sender
+        return self.message
