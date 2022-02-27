@@ -27,7 +27,15 @@
     {% endblock %}
     {% block content %}
 
-        <div id="chat-log"></div>
+        <div id="chat-log">
+            {% for message in messages %}
+                <div class="message">
+                    <p class="author">{{ message.sender }}</p>
+                    <p class="text">{{ message.message }}</p>
+                    <p class="time">{{ message.date }}</p>
+                </div>
+            {% endfor %}
+        </div>
         <input id="chat-message-input" type="text" size="100"><br>
         <input id="chat-message-submit" type="button" value="Send">
         {{ chat_id|json_script:"room-name" }}
