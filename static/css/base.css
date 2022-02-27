@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
 
+/* General Styles Start */
 html, body, main {
     height: 100%;
 }
@@ -14,10 +15,11 @@ body {
 }
 
 h1 {
-    margin: 0px;
+    padding: 5% 0px 0px;
     font-size: 60px;
     letter-spacing: 0.5em;
-    border-bottom: 4px solid #232423;
+    text-align: center;
+    
 }
 
 h2 {
@@ -30,9 +32,10 @@ a {
     color: inherit;
 }
 
- #home-container {
+.container {
     right: 50%;
     bottom: 50%;
+    width: 60%;
     transform: translate(50%,50%);
     position: absolute;
     text-align: center;
@@ -58,6 +61,7 @@ a {
     color: rgba(235, 232, 237, 0.795);
     background-color: #232423;
 }
+/* General Styles End */
 
 div.card {
     width: 60%;
@@ -65,7 +69,7 @@ div.card {
     margin-bottom: 10px;;
   }
   
-  .card {
+.card {
     border: 1px solid #fb5849;
     border-radius: 15px;
     padding: 5px;
@@ -74,4 +78,49 @@ div.card {
 img {
     height: 350px;
     width: auto;
+}
+
+/* Chat Styles */
+
+#chat-log {
+    height: 60%;
+    box-sizing: border-box;
+    padding: 10px 0px 0px;
+    overflow-y: scroll;
+    width: 50vw;
+    margin: 0 auto;
+}
+
+.message {
+    padding: 5px;
+    border-radius: 5px;
+    color: #232423;
+    width: 80%;
+    margin: 0 auto 10px;
+    background-color: rgba(235, 232, 237, 0.6);
+    font-size: 20px;
+}
+
+#chat-message-input {
+    bottom: 17%;
+    width: 45%;
+}
+
+#chat-message-submit{
+    bottom: 9%;
+    width: 30%;
+}
+
+/* End of Chat Styles */
+
+/* Media Queries */
+
+@media screen and (max-width: 1024px) {
+    
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 30px;
+    }
 }
