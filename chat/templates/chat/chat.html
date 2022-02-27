@@ -38,6 +38,7 @@
         </div>
         <input id="chat-message-input" type="text" size="100"><br>
         <input id="chat-message-submit" type="button" value="Send">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         {{ chat_id|json_script:"room-name" }}
         <script>
             const chatLog = document.getElementById('chat-log');
@@ -54,7 +55,7 @@
 
             chatSocket.onmessage = function(e) {
                 const data = JSON.parse(e.data);
-                document.querySelector('#chat-log').value += (data.message + '\n');
+
                 let message = document.createElement('div');
                 let author = document.createElement('p');
                 let text = document.createElement('p');

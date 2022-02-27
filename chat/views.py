@@ -7,7 +7,7 @@ def chat(request, chat_id):
     '''Chat page view'''
     if not request.user.is_authenticated:
         return render(request, "chat/permission_denied.html")
-    chat = get_object_or_404(PrivateChat, pk=chat_id)
+    chat = get_object_or_404(PrivateChat, pk=chat_id)    
     if request.user.id not in [chat.user1.id, chat.user2.id]:
         return render(request, "chat/permission_denied.html")
     messages = chat.messages.all().order_by("date")
