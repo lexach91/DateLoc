@@ -1,6 +1,6 @@
 
 {%extends 'base.html'%}
-
+{% block content %}
     <h1>Create your profile</h1>
     <form action="#" method="post">
 
@@ -32,7 +32,7 @@
             </select>
             <div id="ifYes" style="display: none;">
                 <label for="other-gender">How do you identify?</label>
-                <input type="text" id="other-gender" name="car">
+                <input type="text" id="other-gender" name="gender">
             </div>
 
             <button type="submit">Create Profile</button>
