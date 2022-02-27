@@ -1,0 +1,12 @@
+<h2>Register user</h2>
+
+<form method="POST" action="{% url 'login_user' %}">
+    {% csrf_token %}
+    
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div>
+    <a href="{% url 'home' %}">HOME</a>
+</div>
