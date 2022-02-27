@@ -20,9 +20,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
     path('chat/', include('chat.urls')),
     path('location_match/', include('location_match.urls')),
     path('profiles/', include('profiles.urls')),
     path('account/', include('allauth.urls')),
+    path('login_user/', include('django.contrib.auth.urls')),
+    path('login_user/', include('login_user.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

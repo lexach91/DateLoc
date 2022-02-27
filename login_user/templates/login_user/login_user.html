@@ -1,0 +1,21 @@
+<h2>Login user</h2>
+
+<p>{{ test_message }}</p>
+
+<form method="POST" action="{% url 'login_user' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="username" class="form-label">User name</label>
+        <input type="text" name="username" class="form-control" id="username" aria-describedby="enter a user name">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<div>
+    <a href="{% url 'home' %}">HOME</a>
+</div>

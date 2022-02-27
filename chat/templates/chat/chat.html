@@ -1,13 +1,49 @@
 {% extends "base.html" %}
 
-    
+    {% block extra_css %}
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        #chat-log {
+            height: 80vh;
+            overflow-y: scroll;
+            width: 50vw;
+            margin: 0 auto;
+            background-color: red;
+            padding: 1em;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+            color: #333;
+            width: 100%;
+        }
+    </style>
+    {% endblock %}
     {% block content %}
 
-        <textarea id="chat-log" cols="100" rows="20"></textarea><br>
+        <div id="chat-log">
+            {% for message in messages %}
+                <div class="message">
+                    <p class="author">{{ message.sender }}</p>
+                    <p class="text">{{ message.message }}</p>
+                    <!-- date should be in a format %b. %d, %Y, %I:%M %p -->
+                    <p class="time">{{ message.date|date:"M. j, Y, g:i A" }}</p>
+                </div>
+            {% endfor %}
+        </div>
         <input id="chat-message-input" type="text" size="100"><br>
         <input id="chat-message-submit" type="button" value="Send">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         {{ chat_id|json_script:"room-name" }}
         <script>
+            const chatLog = document.getElementById('chat-log');
+            chatLog.scrollTop = chatLog.scrollHeight;
             const roomName = JSON.parse(document.getElementById('room-name').textContent);
             let ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
             const chatSocket = new WebSocket(
@@ -21,7 +57,39 @@
 
             chatSocket.onmessage = function(e) {
                 const data = JSON.parse(e.data);
-                document.querySelector('#chat-log').value += (data.message + '\n');
+                let url = "{% url 'save_message' chat_id %}";
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        'message': data.message,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}',
+                    },
+                    success: function(data) {
+                        console.log(data);
+                        let message = document.createElement('div');
+                        let author = document.createElement('p');
+                        let text = document.createElement('p');
+                        let time = document.createElement('p');
+                        message.classList.add('message');
+                        author.classList.add('author');
+                        text.classList.add('text');
+                        time.classList.add('time');
+                        author.textContent = data.sender;
+                        text.textContent = data.message;
+                        time.textContent = data.date;
+                        message.appendChild(author);
+                        message.appendChild(text);
+                        message.appendChild(time);
+                        chatLog.appendChild(message);
+
+                        // console.log(data);
+                        // console.log("{{ request.user }}");
+                        // need to scroll to bottom of chat log
+                        chatLog.scrollTop = chatLog.scrollHeight;
+                    },
+                })
+                
             };
 
             chatSocket.onclose = function(e) {
