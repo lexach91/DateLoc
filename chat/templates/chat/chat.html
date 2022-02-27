@@ -1,13 +1,38 @@
 {% extends "base.html" %}
 
-    
+    {% block extra_css %}
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        #chat-log {
+            height: 80vh;
+            overflow-y: scroll;
+            width: 50vw;
+            margin: 0 auto;
+            background-color: red;
+            padding: 1em;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+            color: #333;
+            width: 100%;
+        }
+    </style>
+    {% endblock %}
     {% block content %}
 
-        <textarea id="chat-log" cols="100" rows="20"></textarea><br>
+        <div id="chat-log"></div>
         <input id="chat-message-input" type="text" size="100"><br>
         <input id="chat-message-submit" type="button" value="Send">
         {{ chat_id|json_script:"room-name" }}
         <script>
+            const chatLog = document.getElementById('chat-log');
             const roomName = JSON.parse(document.getElementById('room-name').textContent);
             let ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
             const chatSocket = new WebSocket(
@@ -22,6 +47,26 @@
             chatSocket.onmessage = function(e) {
                 const data = JSON.parse(e.data);
                 document.querySelector('#chat-log').value += (data.message + '\n');
+                let message = document.createElement('div');
+                let author = document.createElement('p');
+                let text = document.createElement('p');
+                let time = document.createElement('p');
+                message.classList.add('message');
+                author.classList.add('author');
+                text.classList.add('text');
+                time.classList.add('time');
+                author.textContent = "{{ user }}";
+                text.textContent = data.message;
+                time.textContent = new Date().toLocaleTimeString();
+                message.appendChild(author);
+                message.appendChild(text);
+                message.appendChild(time);
+                chatLog.appendChild(message);
+
+                // console.log(data);
+                // console.log("{{ request.user }}");
+                // need to scroll to bottom of chat log
+                chatLog.scrollTop = chatLog.scrollHeight;
             };
 
             chatSocket.onclose = function(e) {
