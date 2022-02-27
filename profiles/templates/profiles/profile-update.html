@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static%}
+
+{% block content %}
+
+  {% if user.is_authenticated %}
+    <h3>Update your RProfile: {{ object.display_name }} </h3>
+    <form method="post" class="profile-form">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit" class="menu-btn">Submit</button>
+        <a class="btn" href="{% url 'profile' %}">Cancel</a>
+    </form>
+
+  {% endif %}
+
+{% endblock %}
