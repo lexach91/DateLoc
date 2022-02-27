@@ -1,33 +1,7 @@
 {% extends "base.html" %}
-
-    {% block extra_css %}
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        #chat-log {
-            height: 80vh;
-            overflow-y: scroll;
-            width: 50vw;
-            margin: 0 auto;
-            background-color: red;
-            padding: 1em;
-        }
-        .message {
-            margin-bottom: 10px;
-            padding: 5px;
-            border-radius: 5px;
-            background-color: #f5f5f5;
-            color: #333;
-            width: 100%;
-        }
-    </style>
-    {% endblock %}
     {% block content %}
-
-        <div id="chat-log">
+        <h1>Chats</h1>
+        <div id="chat-log" class="container">
             {% for message in messages %}
                 <div class="message">
                     <p class="author">{{ message.sender }}</p>
@@ -37,8 +11,8 @@
                 </div>
             {% endfor %}
         </div>
-        <input id="chat-message-input" type="text" size="100"><br>
-        <input id="chat-message-submit" type="button" value="Send">
+        <input id="chat-message-input" class="container" type="text" size="100" placeholder="Send a message"><br>
+        <input id="chat-message-submit" class="container" type="button" value="Send">
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         {{ chat_id|json_script:"room-name" }}
         <script>
