@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import DetailView, ListView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy, reverse
 
 from .models import UserProfile
@@ -22,7 +23,7 @@ def profile(request):
 class ProfileCreateView(CreateView):
     '''Profile Detail view'''
     model = UserProfile
-    template_name = 'profiles/create_profiles.html'
+    template_name = 'profiles/create_profile.html'
     fields = "__all__"
     success_message = "Profile created"
     success_url = reverse_lazy('profile')
