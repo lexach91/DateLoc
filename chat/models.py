@@ -7,7 +7,7 @@ class PrivateChat(models.Model):
     user2 = models.ForeignKey(User, related_name='user2', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user1 + ' ' + self.user2
+        return f'{self.user1} {self.user2}'
 
 
 class Message(models.Model):
