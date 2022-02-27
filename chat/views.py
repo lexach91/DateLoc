@@ -27,5 +27,5 @@ def save_message(request, chat_id):
         sender = request.user
         if message:
             Message.objects.create(chat=chat, sender=sender, message=message)
-            return JsonResponse({'success': True})
-        
+            message = Message.objects.filter(chat=chat, sender=sender).order_by("-date")[0]
+            return JsonResponse({'message': message.message, 'date': message.date.strftime("%b. %d, %Y, %I:%M %p"), 'sender': message.sender.username})
