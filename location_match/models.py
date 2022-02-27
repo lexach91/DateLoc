@@ -4,6 +4,14 @@ from django.contrib.auth.models import User
 from profiles.models import UserProfile
 
 
+class Locations(models.Model):
+    name = models.CharField(max_length=254)
+    liked_by = models.ManyToManyField(User, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Location_Match(models.Model):
     """
     Model to match users location

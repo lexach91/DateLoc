@@ -28,4 +28,5 @@ urlpatterns = [
     path('account/', include('allauth.urls')),
     path('login_user/', include('django.contrib.auth.urls')),
     path('login_user/', include('login_user.urls')),
+    path('my_matches/', include('my_matches.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
