@@ -7,10 +7,17 @@
         <h1>Escapade</h1>
         <h2> <em>For a Date to Remember</em></h2>
         <div>
+<<<<<<< HEAD
+            
+=======
             <a href="{% url 'create-profile' %}" id="create-account-btn" class="center, homepage-btn">Create account</a>
+>>>>>>> aed1ff44cff28657f597a5dfb7ad5758778e1154
             {% if user.is_authenticated %}
+            <a href="{% url 'location_match' %}" id="create-account-btn" class="center, homepage-btn">Location match</a>
             <a href="{% url 'logout_user' %}" id="create-account-btn" class="center, homepage-btn">Logout</a>
+            <a href="{% url 'my_matches' %}" id="create-account-btn" class="center, homepage-btn">My Matches</a>
             {% else %}
+            <a href="{% url 'register_user' %}" id="create-account-btn" class="center, homepage-btn">Create account</a>
             <a href="{% url 'login_user' %}" id="create-account-btn" class="center, homepage-btn">Sign in</a>
             {% endif %}
         </div>

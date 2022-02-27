@@ -1,1 +1,10 @@
 <h1>Location Match Page</h1>
+
+<p>{{ current_user }}</p>
+
+
+{% for location in all_locations %}
+<a href="{% url 'liked_location' location.id %}">{{ location.name }}</a>
+{% endfor %}
+<br>
+<a href="{% url 'home' %}" id="create-account-btn" class="center, homepage-btn">Home</a>
