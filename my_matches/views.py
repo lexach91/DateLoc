@@ -20,11 +20,9 @@ def my_matches(request):
 
 def my_matches_in_location(request, location_id):
     selected_location = get_object_or_404(Locations, id=location_id)
-    s = Locations.liked_by.objects.all()
 
     context = {
         'selected_location': selected_location,
-        's': s
     }
 
     return render(request, "my_matches/my_matches_in_location.html", context)
