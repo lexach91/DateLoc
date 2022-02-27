@@ -5,7 +5,7 @@ from .models import UserProfile
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        exclude = ('user',)
+        fields = "__all__"
 
     def __init__(self, *args, **kwargs):
         """
@@ -14,7 +14,8 @@ class UserProfileForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'display_name': 'Display Name',
+            'user': 'User',
+            'name': 'Display Name',
             'image': 'Image',
             'bio': 'Bio',
             'email': 'Email',
