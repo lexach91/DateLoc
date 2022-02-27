@@ -22,3 +22,9 @@ def login_user(request):
         }
 
         return render(request, "login_user/login_user.html", context)
+
+
+def logout_user(request):
+    logout(request)
+
+    return redirect('home')

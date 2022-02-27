@@ -5,9 +5,16 @@
     <div id="flex-container" class="hidden">
         <h1>Tryst</h1>
         <h2>Catchy Slogan</h2>
+        {% if user.is_authenticated %}
+        <p>Hello {{ user }}</p>
+        {% endif %}
         <div>
             <a href="" id="create-account-btn" class="center, homepage-btn">Create account</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout_user' %}" id="create-account-btn" class="center, homepage-btn">Logout</a>
+            {% else %}
             <a href="{% url 'login_user' %}" id="create-account-btn" class="center, homepage-btn">Sign in</a>
+            {% endif %}
         </div>
     </div>
 
