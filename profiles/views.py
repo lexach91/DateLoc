@@ -11,28 +11,28 @@ class ProfileListView(ListView):
     '''Home page view'''
     model = UserProfile
     queryset = UserProfile.objects.all()
-    template_name = 'profiles/profiles_list.html'
-
-
-def profile(request):
-    '''Home page view'''
-    return render(request, "profiles/profile-detail.html")
+    template_name = 'profiles/profile.html'
 
 
 class ProfileCreateView(CreateView):
     '''Profile Detail view'''
     model = UserProfile
-    template_name = 'profiles/create_profiles.html'
-    fields = "__all__"
+    template_name = 'profiles/create_profile.html'
+    form_class = UserProfileForm
     success_message = "Profile created"
     success_url = reverse_lazy('profile')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class ProfileDetailView(DetailView):
     '''Profile Detail view'''
     model = UserProfile
     template_name = 'profiles/profile-detail.html'
-    fields = '__all__'
+    form_class = UserProfileForm
+    success_url = reverse_lazy('profile')
 
 
 class ProfileUpdateView(UpdateView):
@@ -49,6 +49,6 @@ class ProfileDeleteView(DeleteView):
     View displays the option to delete the Profile to the user.
     '''
     model = UserProfile
-    template_name = 'rprofiles/profile-delete.html'
+    template_name = 'profiles/profile-delete.html'
     success_message = "Profile will be deleted"
     success_url = reverse_lazy('profile')
