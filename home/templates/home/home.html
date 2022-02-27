@@ -1,13 +1,11 @@
-{%extends 'base.html'%}
-
+{% extends 'base.html' %}
+{% load static %}
 {% block content %}
+
     <!-- Landing Page Content -->
-    <div id="flex-container" class="hidden">
-        <h1>Tryst</h1>
-        <h2>Catchy Slogan</h2>
-        {% if user.is_authenticated %}
-        <p>Hello {{ user }}</p>
-        {% endif %}
+    <div id="home-container">
+        <h1>Escapade</h1>
+        <h2> <em>For a Date to Remember</em></h2>
         <div>
             <a href="{% url 'register_user' %}" id="create-account-btn" class="center, homepage-btn">Create account</a>
             {% if user.is_authenticated %}
@@ -16,18 +14,6 @@
             <a href="{% url 'login_user' %}" id="create-account-btn" class="center, homepage-btn">Sign in</a>
             {% endif %}
         </div>
-    </div>
-
-    <!-- Create Profile Content -->
-    <div id="create-profile-container">
-        <h2>Create your profile</h2>
-        <form action="" method="post">
-
-        </form>
-    </div>
-
-    <div id="sign-in-content" class="hidden">
-
     </div>
 
 
