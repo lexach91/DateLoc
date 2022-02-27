@@ -29,3 +29,15 @@ def save_message(request, chat_id):
             Message.objects.create(chat=chat, sender=sender, message=message)
             message = Message.objects.filter(chat=chat, sender=sender).order_by("-date")[0]
             return JsonResponse({'message': message.message, 'date': message.date.strftime("%b. %d, %Y, %I:%M %p"), 'sender': message.sender.username})
+        
+def create_new_chat(request, user_id):
+    '''Create new chat with user'''
+    if request.user.is_authenticated:
+        user = get_object_or_404(User, pk=user_id)
+        if request.user.id != user.id:
+            chat = PrivateChat.objects.filter(user1=request.user, user2=user)
+            if chat:
+                chat = chat[0]
+            else:
+                chat = PrivateChat.objects.create(user1=request.user, user2=user)
+            return JsonResponse({'chat_id': chat.id})
