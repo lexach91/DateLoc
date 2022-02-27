@@ -21,9 +21,8 @@ def location_match(request):
 
 def liked_location(request, location_id):
     selected_location = get_object_or_404(Locations, id=location_id)
-    current_user = request.user.id
+    current_user = request.user
 
-    selected_location.liked_by.add(request.user.id)
-    # current_user.liked_location.add(selected_location)
+    selected_location.liked_by.add(current_user)
 
     return render(request, "location_match/location_match.html")
