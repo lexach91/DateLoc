@@ -58,3 +58,20 @@ a {
     color: rgba(235, 232, 237, 0.795);
     background-color: #232423;
 }
+
+div.card {
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 10px;;
+  }
+  
+  .card {
+    border: 1px solid #fb5849;
+    border-radius: 15px;
+    padding: 5px;
+  }
+
+img {
+    height: 350px;
+    width: auto;
+}
