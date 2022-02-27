@@ -2,7 +2,7 @@
 
 <p>{{ test_message }}</p>
 
-<form>
+<form method="POST" action="{% url 'login_user' %}">
     {% csrf_token %}
     <div class="mb-3">
         <label for="username" class="form-label">User name</label>
