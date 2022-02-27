@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from .models import PrivateChat, Message
+from django.contrib.auth.models import User
 
 
 def chat(request, chat_id):
@@ -20,14 +21,14 @@ def chat(request, chat_id):
 def save_message(request, chat_id):
     '''Save message to database'''
     if request.is_ajax() and request.user.is_authenticated:
-        chat = get_object_or_404(PrivateChat, pk=chat_id)
-        if request.user.id not in [chat.user1.id, chat.user2.id]:
+        chat_obj = get_object_or_404(PrivateChat, pk=chat_id)
+        if request.user.id not in [chat_obj.user1.id, chat_obj.user2.id]:
             return JsonResponse({'error': 'You are not allowed to send messages to this chat'})
         message = request.POST.get("message")
         sender = request.user
         if message:
-            Message.objects.create(chat=chat, sender=sender, message=message)
-            message = Message.objects.filter(chat=chat, sender=sender).order_by("-date")[0]
+            Message.objects.create(chat=chat_obj, sender=sender, message=message)
+            message = Message.objects.filter(chat=chat_obj, sender=sender).order_by("-date")[0]
             return JsonResponse({'message': message.message, 'date': message.date.strftime("%b. %d, %Y, %I:%M %p"), 'sender': message.sender.username})
         
 def create_new_chat(request, user_id):
@@ -35,9 +36,9 @@ def create_new_chat(request, user_id):
     if request.user.is_authenticated:
         user = get_object_or_404(User, pk=user_id)
         if request.user.id != user.id:
-            chat = PrivateChat.objects.filter(user1=request.user, user2=user)
-            if chat:
-                chat = chat[0]
+            chat_obj = PrivateChat.objects.filter(user1=request.user, user2=user)
+            if chat_obj:
+                chat_obj = chat_obj[0]
             else:
-                chat = PrivateChat.objects.create(user1=request.user, user2=user)
-            return JsonResponse({'chat_id': chat.id})
+                chat_obj = PrivateChat.objects.create(user1=request.user, user2=user)
+            return JsonResponse({'chat_id': chat_obj.id})
