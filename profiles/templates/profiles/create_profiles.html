@@ -8,7 +8,7 @@
 <section class="profile-card-container container">
     <h3>Create a Profile:</h3>
     <form method="post" enctype="multipart/form-data" class="profile-form">
-        {{ form }}
+        {{ form.as_p }}
         {% csrf_token %}
         <button type="submit" class="btn">Submit</button>
         <a class="btn" href="">Cancel</a>
