@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     'chat',
     'home',
     # 'crispy_forms',
-    'login_user'
+    'login_user',
+    'my_matches',
 ]
 
 MIDDLEWARE = [
