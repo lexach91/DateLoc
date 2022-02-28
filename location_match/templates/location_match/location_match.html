@@ -5,7 +5,6 @@
 
 <h1>Location Match Page</h1>
 
-<p>{{ current_user }}</p>
 
 
 {% for location in all_locations %}
@@ -13,11 +12,11 @@
 <a href="{% url 'liked_location' location.id %}" id="create-account-btn" class="center, homepage-btn">{{ location.name }}</a>
 {% endfor %}
 {% if liked_location %}
-<h2>{{ liked_location.name }}</h2>
-<h3>Orther who liked the location:</h3>
+<h2>Others who are looking in {{ liked_location.name }}</h2>
+<h3></h3>
 <ul>
 {% for user in liked_location.liked_by.all %}
-<li><a href="" id="create-account-btn" class="center, homepage-btn">{{ user }}</a></li>
+<li><a href="{% url 'get_or_create_chat' user2=user.id %}" id="create-account-btn" class="center, homepage-btn">{{ user }} {{ user.id }}</a></li>
 {% endfor %}
 </ul>
 {% endif %}

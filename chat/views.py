@@ -20,16 +20,14 @@ def chat(request, chat_id):
     
 def save_message(request, chat_id):
     '''Save message to database'''
-    if request.is_ajax() and request.user.is_authenticated:
+    if request.is_ajax():
         chat_obj = get_object_or_404(PrivateChat, pk=chat_id)
         if request.user.id not in [chat_obj.user1.id, chat_obj.user2.id]:
             return JsonResponse({'error': 'You are not allowed to send messages to this chat'})
-        message = request.POST.get("message")
-        sender = request.user
-        if message:
-            Message.objects.create(chat=chat_obj, sender=sender, message=message)
-            message = Message.objects.filter(chat=chat_obj, sender=sender).order_by("-date")[0]
-            return JsonResponse({'message': message.message, 'date': message.date.strftime("%b. %d, %Y, %I:%M %p"), 'sender': message.sender.username})
+        if message := request.POST.get("message"):
+            Message.objects.create(chat=chat_obj, sender=request.user, message=message)
+            message = Message.objects.filter(chat=chat_obj, sender=request.user).order_by("-date")[0]
+            return JsonResponse({'message': message.message, 'date': message.date.strftime("%b. %d, %Y, %I:%M %p")})
         
 def get_or_create_chat(request, user2):
     '''Get or create chat between two users'''

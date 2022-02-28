@@ -5,13 +5,13 @@
             {% for message in messages %}
                 {% if message.sender == user %}
                     <div class="message by-me">
-                        <p class="author"><strong>{{ message.sender }}</strong></p>
+                        <!-- <p class="author"><strong>{{ message.sender }}</strong></p> -->
                         <p class="text">{{ message.message }}</p>
                         <p class="time"><em>{{ message.date|date:"M. j, Y, g:i A" }}</em></p>
                     </div>
                 {% else %}
                     <div class="message by-another">
-                        <p class="author"><strong>{{ message.sender }}</strong></p>
+                        <!-- <p class="author"><strong>{{ message.sender }}</strong></p> -->
                         <p class="text">{{ message.message }}</p>
                         <p class="time"><em>{{ message.date|date:"M. j, Y, g:i A" }}</em></p>
                     </div>
@@ -20,8 +20,10 @@
         </div>
         <input id="chat-message-input" class="container" type="text" size="100" placeholder="Send a message"><br>
         <input id="chat-message-submit" class="container" type="button" value="Send">
+        <a href="{% url 'home' %}" id="create-account-btn" class="center, homepage-btn">Home</a>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         {{ chat_id|json_script:"room-name" }}
+        {{ request.user.id|json_script:"user_id" }}
         <script>
             const chatLog = document.getElementById('chat-log');
             chatLog.scrollTop = chatLog.scrollHeight;
@@ -38,28 +40,36 @@
 
             chatSocket.onmessage = function(e) {
                 const data = JSON.parse(e.data);
+                const user_id = data['user_id'];
+                const logged_user_id = JSON.parse(document.getElementById('user_id').textContent);
                 let url = "{% url 'save_message' chat_id %}";
                 $.ajax({
                     url: url,
                     type: 'POST',
                     data: {
                         'message': data.message,
+                        // 'user_id': logged_user_id,
                         'csrfmiddlewaretoken': '{{ csrf_token }}',
                     },
                     success: function(data) {
                         console.log(data);
                         let message = document.createElement('div');
-                        let author = document.createElement('p');
+                        // let author = document.createElement('p');
                         let text = document.createElement('p');
                         let time = document.createElement('p');
                         message.classList.add('message');
-                        author.classList.add('author');
+                        if (user_id == logged_user_id) {
+                            message.classList.add('by-me');
+                        } else {
+                            message.classList.add('by-another');
+                        }
+                        // author.classList.add('author');
                         text.classList.add('text');
                         time.classList.add('time');
-                        author.textContent = data.sender;
+                        // author.textContent = data.sender;
                         text.textContent = data.message;
                         time.textContent = data.date;
-                        message.appendChild(author);
+                        // message.appendChild(author);
                         message.appendChild(text);
                         message.appendChild(time);
                         chatLog.appendChild(message);
