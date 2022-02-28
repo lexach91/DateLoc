@@ -32,6 +32,10 @@ a {
     color: inherit;
 }
 
+li {
+    list-style-type: none;
+}
+
 .container {
     right: 50%;
     bottom: 50%;
