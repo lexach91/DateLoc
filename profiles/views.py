@@ -1,20 +1,21 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import DetailView, ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy, reverse
 
 from .models import UserProfile
 from .forms import UserProfileForm
 
 
-class ProfileListView(ListView):
+class ProfileListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
     '''Home page view'''
     model = UserProfile
-    queryset = UserProfile.objects.all()
     template_name = 'profiles/profile.html'
 
 
-class ProfileCreateView(CreateView):
+class ProfileCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     '''Profile Detail view'''
     model = UserProfile
     template_name = 'profiles/create_profile.html'
@@ -27,7 +28,7 @@ class ProfileCreateView(CreateView):
         return super().form_valid(form)
 
 
-class ProfileDetailView(DetailView):
+class ProfileDetailView(LoginRequiredMixin, SuccessMessageMixin, DetailView):
     '''Profile Detail view'''
     model = UserProfile
     template_name = 'profiles/profile-detail.html'
@@ -35,7 +36,7 @@ class ProfileDetailView(DetailView):
     success_url = reverse_lazy('profile')
 
 
-class ProfileUpdateView(UpdateView):
+class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     '''Profile Update view'''
     model = UserProfile
     template_name = 'profiles/profile-update.html'
@@ -44,7 +45,7 @@ class ProfileUpdateView(UpdateView):
     success_url = reverse_lazy('profile')
 
 
-class ProfileDeleteView(DeleteView):
+class ProfileDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     '''
     View displays the option to delete the Profile to the user.
     '''

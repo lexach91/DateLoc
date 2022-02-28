@@ -26,4 +26,6 @@ def liked_location(request, location_id):
     selected_location.liked_by.add(request.user.id)
     # current_user.liked_location.add(selected_location)
 
-    return render(request, "location_match/location_match.html")
+    return render(request, "location_match/location_match.html", {
+        'liked_location': selected_location,
+    })
