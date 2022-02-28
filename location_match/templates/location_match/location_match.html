@@ -1,19 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
 <h1>Location Match Page</h1>
 
 <p>{{ current_user }}</p>
 
 
 {% for location in all_locations %}
-<a href="{% url 'liked_location' location.id %}">{{ location.name }}</a>
+<!-- <a href="{% url 'liked_location' location.id %}">{{ location.name }}</a> -->
+<a href="{% url 'liked_location' location.id %}" id="create-account-btn" class="center, homepage-btn">{{ location.name }}</a>
 {% endfor %}
 {% if liked_location %}
 <h2>{{ liked_location.name }}</h2>
 <h3>Orther who liked the location:</h3>
 <ul>
 {% for user in liked_location.liked_by.all %}
-<li>{{ user }}</li>
+<li><a href="" id="create-account-btn" class="center, homepage-btn">{{ user }}</a></li>
 {% endfor %}
 </ul>
 {% endif %}
 <br>
 <a href="{% url 'home' %}" id="create-account-btn" class="center, homepage-btn">Home</a>
+
+{% endblock %}

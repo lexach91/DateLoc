@@ -6,6 +6,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy, reverse
 
+
 from .models import UserProfile
 from .forms import UserProfileForm
 

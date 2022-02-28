@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 def login_user(request):
@@ -12,14 +13,20 @@ def login_user(request):
         if user is not None:
             login(request, user)
             # Redirect to a success page.
-            return redirect('home')
+            test_current = request.user.id
+            context = {
+                'test_current': test_current
+            }
+            # return redirect('home')
+            return render(request, "home/home.html", context)
+
         else:
             # Return an 'invalid login' error message.
             messages.success(request, ('This is not a valid username and/or password'))
             return redirect('login_user')
     else:
         context = {
-            'test_message': 'Hello from login_user app!'
+            'test_message': 'Hello from login_user app!',
         }
 
         return render(request, "login_user/login_user.html", context)
