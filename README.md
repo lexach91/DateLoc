@@ -67,50 +67,44 @@ potentially find love, with an amazing first date story.
 
 [Wireframes - Seperate document]()
 
-I have included both mobile and desktop wireframes to demonstrate the progression in the project. As you can see, the core elements remain for both sets, but the layout is far closer to the mobile wireframes than desktop.
-
-Though tablet wireframes were not made seperately, I knew that by having a mobile first approach, I would be able to scale the site up to tablet sizes relatively easily.
+Click above to view all of the wireframes for mobile, tablet and desktop.
 
 ## Features
 
-[See All Features](assets/readme-content/features.md)
 ### Current Features
 
-1. The navigation bar is central and at the top of the page on all devices. It lays out the flow of the page and links smoothly to the appropriate section.
-![Nav Bar](assets/readme-content/images/iphone-12-navbar.jpg)
+1. Create Account
+- Users can click here to create a username and password for the app. Users must confirm their password to prevent mistakes. Parameters are
+listed next to the relavent input for what can and cannot be used.
 
-1. The colour scheme has been chosen to maximise contrast between foreground and background elements. Where text is features over an image, an overlay or background has been applied to make it more visible.
-![Hero Text](assets/readme-content/images/hero-image-feature.png)
+1. Sign in
+- Users who have already made an account can sign in with their credentials and all of their chats and profile
+details are saved.
 
-1. The description section tells the user briefly what it is that the company does, leaving no guess work.
-![Description Feature](assets/readme-content/images/description-feature.png)
+1. Profile
+- Users can view their current profile details, including profile pic, age, bio, relationship status etc.
 
-1. Buttons have been added around relevant elements to encourage the user to interact with the site. The button changes on hover to let the user know it is clickable.
-![CTA Buttons](assets/readme-content/images/call-to-action-feature.png)
+1. Update Profile
+- Users Can edit all of the details previously mentioned here, and save them or cancel the changes.
 
-1. The shows section has a matching image with information where possible to draw the user into the section.
-![Shows Feature](assets/readme-content/images/shows-feature.png)
+1. Location Match
+- Users can choose from a list of locations, then see other users who have also liked that location.
 
-1. The about section has a text overlay effect on hover for each image, allowing the user to interact and choose the information they wish to view.
-![About Feature](assets/readme-content/images/about-feature.png)
-
-1. The contact form allows users to get in touch the Blackshaw Theatre, and stands out from the rest of the site, with inverted colours.
-![Contact Feature](assets/readme-content/images/contact-feature.png)
-
-1. The submit button at the botton of the contact form stands out, encouraging users to complete and send the form. It has a hover effect, and an animation when pressed.
-![Submit Hover Feature](assets/readme-content/images/submit-hover-feature.png)
-![Submit Click Feature](assets/readme-content/images/submit-click-feature.png)
-
-1. The footer contains social links that open in a new tab, with a nopener property for added userr security.
-![Footer Feature](assets/readme-content/images/footer-feature.png)
+1. Chat
+- Once users choose who they want to chat with, a chat window will open for them to converse and organise a meetup.
 
 ### Features Left to Implement
 
-1. I would like to add a blog page, within the site, with a maintainable layout that can be easily edited or replicated for new entries.
-1. The hero image could be a slideshow of images, or a video of Blackshaw in action, increasing user retention.
-1. I would like the footer links to invert on hover, but just the image rather than any background behind it.
-1. Blackshaw Theatre have a podcast on Podbean. It would be useful to have a media player built in so users can listen through the website.
-1. A shopify site with ticket links on the site would be better than sending users to external sites to purchase tickets. For bigget shows this could really help with analytics when working out where traffic is coming from.
+1. The concept of this app could work in anywhere in the world, and could be limited to a single city, with the location options
+    being a restaurant or park. For this reason, it would be helpful to have images displaying as well as the location name, so users
+    can get a feel for the places they like.
+
+1. With this in mind, users could also rate the locations for other users to see and make a decision based on this.
+
+1. When matching with a person, it could be useful to have the other user's profile picture appear. Currently the app works as a blind date
+    type thing, but matching a picture to a name would make users feel more secure.
+
+1. 
 
 ## Technologies Used
 
