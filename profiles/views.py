@@ -3,6 +3,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import DetailView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.models import User
 from django.urls import reverse_lazy, reverse
 
 from .models import UserProfile
@@ -13,6 +14,13 @@ class ProfileListView(LoginRequiredMixin, SuccessMessageMixin, ListView):
     '''Home page view'''
     model = UserProfile
     template_name = 'profiles/profile.html'
+
+    def get_user(self, request, pk):
+        current_user = get_object_or_404(UserProfile, id=request.user.id)
+        current_user = request.user.id
+
+        context = {'current_user': current_user}
+        return render(request, "profiles/profile.html", context)
 
 
 class ProfileCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -32,7 +40,6 @@ class ProfileDetailView(LoginRequiredMixin, SuccessMessageMixin, DetailView):
     '''Profile Detail view'''
     model = UserProfile
     template_name = 'profiles/profile-detail.html'
-    form_class = UserProfileForm
     success_url = reverse_lazy('profile')
 
 

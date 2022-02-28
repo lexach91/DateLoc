@@ -3,7 +3,8 @@
 
 {% block content %}
 
-    <h1>Profile Page</h1>
+    <h1>Profile Page{{current_user}}</h1>
+
     {% if request.user.id in object_list %}
         <h1>Your Profile</h1>
     {% else %}
