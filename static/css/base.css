@@ -12,18 +12,18 @@ body {
     color: #232423;
     background: rgb(34,193,195);
     background: linear-gradient(315deg, rgba(34,193,195,1) 0%, rgba(164,8,244,1) 100%);
+    font-size: 62.5%;
 }
 
 h1 {
-    padding: 5% 0px 0px;
-    font-size: 60px;
-    letter-spacing: 0.5em;
+    padding: 10px 0px 0px;
+    font-size: 4rem;
+    letter-spacing: 0.8rem;
     text-align: center;
-    
 }
 
 h2 {
-    font-size: 40px;
+    font-size: 3rem;
     color: #3e403e;
 }
 
@@ -48,13 +48,14 @@ a {
 
 .homepage-btn {
     font-family: 'Roboto', sans-serif;
-    width: 300px;
+    width: 90%;
     display: block;
-    margin: 20px auto;
+    margin: 10px auto;
     padding: 10px 30px;
     border: 5px solid #232423;
     border-radius: 100px;
-    font-size: 20px;
+    font-size: 1.6rem;
+    max-width: 300px;
 }
 
 .homepage-btn:hover {
@@ -98,16 +99,16 @@ img {
     width: 80%;
     margin: 0 auto 10px;
     background-color: rgba(235, 232, 237, 0.6);
-    font-size: 20px;
+    font-size: 1.4rem;
 }
 
 #chat-message-input {
-    bottom: 17%;
+    bottom: 15%;
     width: 45%;
 }
 
 #chat-message-submit{
-    bottom: 9%;
+    bottom: 7%;
     width: 30%;
 }
 
@@ -116,11 +117,59 @@ img {
 /* Media Queries */
 
 @media screen and (max-width: 1024px) {
-    
-}
-
-@media screen and (max-width: 480px) {
     h1 {
-        font-size: 30px;
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.4rem;
     }
 }
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+    .container {
+        min-width: 343px;
+    }
+
+    .homepage-btn {
+        font-size: 1.6rem;
+        width: 80%;
+    }
+}
+
+@media (max-width: 596px) {
+    .homepage-btn {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.9rem;
+        letter-spacing: 0.5rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .homepage-btn {
+        font-size: 1rem;
+        width: 70%;
+        margin: 5px auto;
+    }
+
+    .container {
+        min-width: 277px;
+        padding: 5px;
+    }
+}
+
+/* End of Media Queries */
