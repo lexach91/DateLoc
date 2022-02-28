@@ -20,6 +20,7 @@
         </div>
         <input id="chat-message-input" class="container" type="text" size="100" placeholder="Send a message"><br>
         <input id="chat-message-submit" class="container" type="button" value="Send">
+        <a href="{% url 'home' %}" id="create-account-btn" class="center, homepage-btn">Home</a>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         {{ chat_id|json_script:"room-name" }}
         {{ request.user.id|json_script:"user_id" }}
