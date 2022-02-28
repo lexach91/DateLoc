@@ -3,12 +3,19 @@
         <h1>Chats</h1>
         <div id="chat-log" class="container">
             {% for message in messages %}
-                <div class="message">
-                    <p class="author">{{ message.sender }}</p>
-                    <p class="text">{{ message.message }}</p>
-                    <!-- date should be in a format %b. %d, %Y, %I:%M %p -->
-                    <p class="time">{{ message.date|date:"M. j, Y, g:i A" }}</p>
-                </div>
+                {% if message.sender == user %}
+                    <div class="message by-me">
+                        <p class="author"><strong>{{ message.sender }}</strong></p>
+                        <p class="text">{{ message.message }}</p>
+                        <p class="time"><em>{{ message.date|date:"M. j, Y, g:i A" }}</em></p>
+                    </div>
+                {% else %}
+                    <div class="message by-another">
+                        <p class="author"><strong>{{ message.sender }}</strong></p>
+                        <p class="text">{{ message.message }}</p>
+                        <p class="time"><em>{{ message.date|date:"M. j, Y, g:i A" }}</em></p>
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
         <input id="chat-message-input" class="container" type="text" size="100" placeholder="Send a message"><br>

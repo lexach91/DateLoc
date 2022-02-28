@@ -93,13 +93,30 @@ img {
 }
 
 .message {
-    padding: 5px;
+    padding: 15px;
     border-radius: 5px;
     color: #232423;
     width: 80%;
     margin: 0 auto 10px;
-    background-color: rgba(235, 232, 237, 0.6);
+    /* background-color: rgba(235, 232, 237, 0.6); */
     font-size: 1.4rem;
+}
+
+.by-me {
+    text-align: right;
+    background-color: rgba(235, 232, 237, 0.9);
+    margin-right: 10px;
+}
+
+.by-another {
+    text-align: left;
+    background-color: rgba(232, 233, 237, 0.6);
+    margin-left: 10px;
+}
+
+.time {
+    font-size: 0.8rem;
+    color: #3e403e;
 }
 
 #chat-message-input {
