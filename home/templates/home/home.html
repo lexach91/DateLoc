@@ -3,12 +3,12 @@
 {% block content %}
 
     <!-- Landing Page Content -->
-    <div id="home-container">
+    <div class="container">
         <h1>Escapade</h1>
         <h2> <em>For a Date to Remember</em></h2>
         <div>
-            
             {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}" id="create-account-btn" class="center, homepage-btn">Profile</a>
             <a href="{% url 'location_match' %}" id="create-account-btn" class="center, homepage-btn">Location match</a>
             <a href="{% url 'logout_user' %}" id="create-account-btn" class="center, homepage-btn">Logout</a>
             <a href="{% url 'my_matches' %}" id="create-account-btn" class="center, homepage-btn">My Matches</a>
@@ -19,6 +19,18 @@
         </div>
     </div>
 
+    <!-- Create Profile Content -->
+    <div id="create-profile-container">
+        <h2>Create your profile</h2>
+        <form action="" method="post">
 
+        </form>
+    </div>
+
+    <div id="sign-in-content" class="hidden">
+
+    </div>
+
+    <p>test</p>
     <script src="assets/js/script.js"></script>
 {% endblock %}

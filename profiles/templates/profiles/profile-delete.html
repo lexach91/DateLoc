@@ -6,8 +6,8 @@
 
 <form class="delete-form" method="post">{% csrf_token %}
     <p>Are you sure you want to delete your profile on: {{ object.display_name }}?</p>
-    <input class="menu-btn" type="submit" value="Confirm">
-    <p class="inline-flex"><a class="menu-btn cancel-btn" href="{% url 'profile' %}">Cancel</a></p>
+    <input class="center, homepage-btn" type="submit" value="Confirm">
+    <p class="inline-flex"><a class="center, homepage-btn" href="{% url 'profile' %}">Cancel</a></p>
     
 </form>
 

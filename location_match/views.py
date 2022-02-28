@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
 
 from .models import Locations
 
@@ -25,4 +26,5 @@ def liked_location(request, location_id):
 
     selected_location.liked_by.add(current_user)
 
+    return HttpResponseRedirect(request.META["HTTP_REFERER"])
     return render(request, "location_match/location_match.html")

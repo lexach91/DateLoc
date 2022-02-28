@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
 
+/* General Styles Start */
 html, body, main {
     height: 100%;
 }
@@ -11,17 +12,18 @@ body {
     color: #232423;
     background: rgb(34,193,195);
     background: linear-gradient(315deg, rgba(34,193,195,1) 0%, rgba(164,8,244,1) 100%);
+    font-size: 62.5%;
 }
 
 h1 {
-    margin: 0px;
-    font-size: 60px;
-    letter-spacing: 0.5em;
-    border-bottom: 4px solid #232423;
+    padding: 10px 0px 0px;
+    font-size: 4rem;
+    letter-spacing: 0.8rem;
+    text-align: center;
 }
 
 h2 {
-    font-size: 40px;
+    font-size: 3rem;
     color: #3e403e;
 }
 
@@ -30,9 +32,10 @@ a {
     color: inherit;
 }
 
- #home-container {
+.container {
     right: 50%;
     bottom: 50%;
+    width: 60%;
     transform: translate(50%,50%);
     position: absolute;
     text-align: center;
@@ -45,19 +48,21 @@ a {
 
 .homepage-btn {
     font-family: 'Roboto', sans-serif;
-    width: 300px;
+    width: 90%;
     display: block;
-    margin: 20px auto;
+    margin: 10px auto;
     padding: 10px 30px;
     border: 5px solid #232423;
     border-radius: 100px;
-    font-size: 20px;
+    font-size: 1.6rem;
+    max-width: 300px;
 }
 
 .homepage-btn:hover {
     color: rgba(235, 232, 237, 0.795);
     background-color: #232423;
 }
+/* General Styles End */
 
 div.card {
     width: 60%;
@@ -65,7 +70,7 @@ div.card {
     margin-bottom: 10px;;
   }
   
-  .card {
+.card {
     border: 1px solid #fb5849;
     border-radius: 15px;
     padding: 5px;
@@ -75,3 +80,96 @@ img {
     height: 350px;
     width: auto;
 }
+
+/* Chat Styles */
+
+#chat-log {
+    height: 60%;
+    box-sizing: border-box;
+    padding: 10px 0px 0px;
+    overflow-y: scroll;
+    width: 50vw;
+    margin: 0 auto;
+}
+
+.message {
+    padding: 5px;
+    border-radius: 5px;
+    color: #232423;
+    width: 80%;
+    margin: 0 auto 10px;
+    background-color: rgba(235, 232, 237, 0.6);
+    font-size: 1.4rem;
+}
+
+#chat-message-input {
+    bottom: 15%;
+    width: 45%;
+}
+
+#chat-message-submit{
+    bottom: 7%;
+    width: 30%;
+}
+
+/* End of Chat Styles */
+
+/* Media Queries */
+
+@media screen and (max-width: 1024px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+    .container {
+        min-width: 343px;
+    }
+
+    .homepage-btn {
+        font-size: 1.6rem;
+        width: 80%;
+    }
+}
+
+@media (max-width: 596px) {
+    .homepage-btn {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.9rem;
+        letter-spacing: 0.5rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .homepage-btn {
+        font-size: 1rem;
+        width: 70%;
+        margin: 5px auto;
+    }
+
+    .container {
+        min-width: 277px;
+        padding: 5px;
+    }
+}
+
+/* End of Media Queries */
