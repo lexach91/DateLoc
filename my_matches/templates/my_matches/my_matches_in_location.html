@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<h2>my matches in location</h2>
+
+<h3>Matches in {{ selected_location }} - This page should contain all those who have also like the location</h3>
+<a href="" class="center, homepage-btn">Example match - Roxy</a>
+
+<h1>{{ selected_location.liked_by }}</h1>
+<a href="{% url 'location_match' %}" id="create-account-btn" class="center, homepage-btn">Location match</a>
+
+
+{% endblock %}

@@ -1,4 +1,15 @@
-<h1>My matches</h1>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 
-<p>{{ current_user }}</p>
-<p>{{ current_user2 }}</p>
+
+<h1>My matchessss</h1>
+
+<p>Click on your liked location to reveal who else is int the area {{ current_user }}</p>
+{% for location in all_locations %}
+    <a href="{% url 'my_matches_in_location' location.id %}" class="center, homepage-btn">{{ location.name }}</a>
+{% endfor %}
+
+<a href="{% url 'home' %}" id="create-account-btn" class="center, homepage-btn">Home</a>
+<a href="{% url 'location_match' %}" id="create-account-btn" class="center, homepage-btn">Location match</a>
+{% endblock %}
