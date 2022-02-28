@@ -5,6 +5,7 @@
 {% block content %}
 
   {% if user.is_authenticated %}
+  <section class="profile-card-container container">
     <h3>Update your Profile: {{ object.display_name }} </h3>
     <form method="post" class="profile-form">
         {{ form.as_p }}
@@ -12,6 +13,7 @@
         <button type="submit" class="center, homepage-btn">Submit</button>
         <a class="center, homepage-btn" href="{% url 'profile' %}">Cancel</a>
     </form>
+  </section>
 
   {% endif %}
 

@@ -10,8 +10,10 @@ from .forms import UserProfileForm
 class ProfileListView(ListView):
     '''Home page view'''
     model = UserProfile
-    queryset = UserProfile.objects.all()
     template_name = 'profiles/profile.html'
+
+    def get_user(self, user):
+        queryset = self.filter(user=user)
 
 
 class ProfileCreateView(CreateView):
