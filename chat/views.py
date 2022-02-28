@@ -24,10 +24,7 @@ def save_message(request, chat_id):
         chat_obj = get_object_or_404(PrivateChat, pk=chat_id)
         if request.user.id not in [chat_obj.user1.id, chat_obj.user2.id]:
             return JsonResponse({'error': 'You are not allowed to send messages to this chat'})
-        message = request.POST.get("message")
-        # user_id = request.POST.get("user_id")
-        # user = get_object_or_404(User, pk=user_id)
-        if message:
+        if message := request.POST.get("message"):
             Message.objects.create(chat=chat_obj, sender=request.user, message=message)
             message = Message.objects.filter(chat=chat_obj, sender=request.user).order_by("-date")[0]
             return JsonResponse({'message': message.message, 'date': message.date.strftime("%b. %d, %Y, %I:%M %p")})
