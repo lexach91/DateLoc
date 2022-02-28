@@ -8,7 +8,7 @@
 
 ## Live Site
 
-[Escapade](Put Heroku live link here)
+[Escapade](https://escapade-match.herokuapp.com/)
 
 ## Repository
 
@@ -63,15 +63,9 @@ potentially find love, with an amazing first date story.
         -   Open Sans is used for the majorty of the site for its ease of readability, to complement that and give a slight difference,
             Roboto is used for the buttons throughout the site.
 
-## Initial Plan
-
- At the start of the project, the plan was to create a multi page site split into the sectons required by the client seen [here](assets/readme-content/wireframes.md). After further consultion with my mentor Antonio Rodriguez, we agreed that a mobile first would be a more appropriate method, as it means less clicking for the user, quicker load times for the page, as I wouldn't have to keep repeating header and footer code. This change work well for the client too.
- 
- The mobile wireframes are the final idea, and then the desktop site was built around this design.
-
 ### Wireframes
 
-[Wireframes - Seperate document](assets/readme-content/wireframes.md)
+[Wireframes - Seperate document]()
 
 I have included both mobile and desktop wireframes to demonstrate the progression in the project. As you can see, the core elements remain for both sets, but the layout is far closer to the mobile wireframes than desktop.
 
