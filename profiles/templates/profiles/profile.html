@@ -36,9 +36,9 @@
                 </div>
                 <hr>
             </div>
-            {% elif request.user.id != profile.user.id %}
+        {% elif request.user.id != profile.user.id %}
             <a href="{% url 'create-profile' %}" class="center, homepage-btn" >Create Profile</a>
-            {% endif %}
+        {% endif %}
     {% endfor %}
   
    

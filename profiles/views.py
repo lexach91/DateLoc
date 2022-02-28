@@ -3,6 +3,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic import DetailView, ListView
 from django.urls import reverse_lazy, reverse
 
+
 from .models import UserProfile
 from .forms import UserProfileForm
 
