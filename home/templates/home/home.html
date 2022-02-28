@@ -7,11 +7,6 @@
         <h1>Escapade</h1>
         <h2> <em>For a Date to Remember</em></h2>
         <div>
-<<<<<<< HEAD
-            <a href="{% url 'create-profile' %}" id="create-account-btn" class="center, homepage-btn">Create account</a>
-=======
-
->>>>>>> origin
             {% if user.is_authenticated %}
             <a href="{% url 'profile' %}" id="create-account-btn" class="center, homepage-btn">Profile</a>
             <a href="{% url 'location_match' %}" id="create-account-btn" class="center, homepage-btn">Location match</a>
