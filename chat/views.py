@@ -33,6 +33,7 @@ def save_message(request, chat_id):
         
 def get_or_create_chat(request, user2):
     '''Get or create chat between two users'''
+    user2 = get_object_or_404(User, pk=user2)
     chat_obj = PrivateChat.objects.get_or_create(user1=request.user, user2=user2)[0]
     chat_obj.save()
     return HttpResponseRedirect(f'/chat/{chat_obj.id}/')
