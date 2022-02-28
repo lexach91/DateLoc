@@ -4,8 +4,15 @@
 {% block content %}
 
     <h1>Profile Page</h1>
+    {% if request.user.id in object_list %}
+        <h1>Your Profile</h1>
+    {% else %}
+        <a href="{% url 'create-profile' %}" class="center, homepage-btn" >Create Profile</a>
+    {% endif %}
     {% for profile in object_list %}
-        {% if user.id == profile.user.id %}
+        
+        {% if request.user.id == profile.user.id %}
+        
             
             </br>
             <!--Member bio-->
@@ -36,8 +43,11 @@
                 </div>
                 <hr>
             </div>
+<<<<<<< HEAD
         {% elif request.user.id != profile.user.id %}
             <a href="{% url 'create-profile' %}" class="center, homepage-btn" >Create Profile</a>
+=======
+>>>>>>> 11d3d9b7c7ca3e4fed02c917098ea5533f005416
         {% endif %}
     {% endfor %}
   

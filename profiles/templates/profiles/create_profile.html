@@ -11,6 +11,7 @@
         {{ form.as_p }}
         {% csrf_token %}
         <button type="submit" class="btn">Submit</button>
-        <a class="btn" href="">Cancel</a>
+        <a class="btn" href="{% url 'profile' %}">Cancel</a>
     </form>
+</section>
     {% endblock %}

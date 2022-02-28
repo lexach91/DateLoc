@@ -3,12 +3,11 @@
 {% load static%}
 
 {% block content %}
-
-<form class="delete-form" method="post">{% csrf_token %}
-    <p>Are you sure you want to delete your profile on: {{ object.display_name }}?</p>
-    <input class="center, homepage-btn" type="submit" value="Confirm">
-    <p class="inline-flex"><a class="center, homepage-btn" href="{% url 'profile' %}">Cancel</a></p>
-    
-</form>
-
+<section class="profile-card-container container">
+    <form class="delete-form" method="post">{% csrf_token %}
+        <h3>Are you sure you want to delete your profile: {{ object.display_name }}?</h3>
+        <input class="center, homepage-btn" type="submit" value="Confirm">
+        <p class="inline-flex"><a class="center, homepage-btn" href="{% url 'profile' %}">Cancel</a></p>
+    </form>
+</section>
 {% endblock %}
