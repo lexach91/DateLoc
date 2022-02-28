@@ -94,11 +94,11 @@ class UserProfile(models.Model):
     email = models.EmailField(max_length=254, null=False, blank=False)
     bio = models.TextField(max_length=500, null=False, blank=False)
     age = models.CharField(max_length=80, null=True, blank=True, choices=Age_Choices,
-                            default='18')
+                           default='18')
     relationship_status = models.CharField(max_length=80, null=True, blank=True, choices=Rel_Status_For_Choices,
-                            default='Single')
+                                           default='Single')
     looking_for = models.CharField(max_length=80, null=True, blank=True, choices=Looking_For_Choices,
-                            default='Women')
+                                   default='Women')
     image = CloudinaryField('image', default='placeholder')
     job_title = models.CharField(max_length=100, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=True, blank=True)

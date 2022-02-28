@@ -9,12 +9,8 @@
         <div>
 
             {% if user.is_authenticated %}
-                {% if request.user.id == user.profile.id %}
-                    <a href="{% url 'profile-detail' profile.id %}" id="create-account-btn" class="center, homepage-btn">Profile</a>
-                {% else %}
-                    <a href="{% url 'create-profile' %}" id="create-account-btn" class="center, homepage-btn">Create Dating Profile</a>
-                {% endif %}
-                    <a href="{% url 'location_match' %}" id="create-account-btn" class="center, homepage-btn">Location match</a>
+            <a href="{% url 'profile' %}" id="create-account-btn" class="center, homepage-btn">Profile</a>
+            <a href="{% url 'location_match' %}" id="create-account-btn" class="center, homepage-btn">Location match</a>
             <a href="{% url 'logout_user' %}" id="create-account-btn" class="center, homepage-btn">Logout</a>
             <a href="{% url 'my_matches' %}" id="create-account-btn" class="center, homepage-btn">My Matches</a>
             {% else %}

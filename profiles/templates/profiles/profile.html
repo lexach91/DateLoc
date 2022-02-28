@@ -5,7 +5,9 @@
 
     <h1>Profile Page</h1>
     {% for profile in object_list %}
-        {% if user.id == profile.user.id %}
+        {% if user.id != profile.user.id %}
+            <p class="center, homepage-btn"><a href="{% url 'create-profile' %}" >Create Profile</a></p>
+        {% else %}
             </br>
             <!--Member bio-->
             <div class="card-container">
@@ -20,12 +22,17 @@
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ profile.display_name }}</h5>
+                        <p class="card-text">{{ profile.age }}</p>
                         <p class="card-text">{{ profile.bio }}</p>
+                        <p class="card-text">{{ profile.relationship_status}}</p>
+                        <p class="card-text">{{ profile.looking_for}}</p>
+                        <p class="card-text">{{ profile.job_title}</p>
+                        
                         <p class="card-text">{{ profile.county }}</p>
                         <p class="card-text">{{ item.category }}</p>
                     </div>
-                    <p class="center, homepage-btn"><a href="{% url 'profile-update' profile.id %}" >Update Profile</a></p>
-                    <p class="center, homepage-btn"><a href="{% url 'delete-profile' profile.id %}" ">Delete Profile</a></p>
+                    <p class="center, homepage-btn"><a href="{% url 'profile-update' profile.id %}">Update Profile</a></p>
+                    <p class="center, homepage-btn"><a href="{% url 'delete-profile' profile.id %}">Delete Profile</a></p>
                 </div>
                 <hr>
             </div>
